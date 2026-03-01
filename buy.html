@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buy — Gabrielle Rul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    background: #fff;
+    color: rgba(0,0,0,0.85);
+    font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
+  }
+
+  .layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 28%;
+    min-width: 220px;
+    max-width: 300px;
+    flex-shrink: 0;
+    padding: 36px 32px 36px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 10;
+  }
+
+  .sidebar-top { display: flex; flex-direction: column; gap: 10px; }
+
+  h1 {
+    font-size: 3.8rem;
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+  }
+
+  .sidebar-contact {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(0,70,171,0.85);
+  }
+  .sidebar-contact a {
+    color: rgba(0,70,171,0.85);
+    text-decoration: none;
+  }
+  .sidebar-contact a:hover { text-decoration: underline; }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 4px;
+  }
+  .nav-link {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(0,70,171,0.85);
+    text-decoration: none;
+  }
+  .nav-link:hover { text-decoration: underline; }
+  .nav-link.active { color: rgba(0,0,0,0.85); }
+
+  .main {
+    flex: 1;
+  }
+
+  @media (max-width: 680px) {
+    .layout { flex-direction: column; }
+    .sidebar {
+      width: 100%; max-width: 100%;
+      padding: 28px 24px 20px;
+      position: relative; height: auto;
+    }
+    h1 { font-size: 3.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <h1>The Mithra<br>Project</h1>
+      <div class="sidebar-contact">
+        <a href="mailto:gabrielle.rul@gmail.com">gabrielle.rul@gmail.com</a><br>
+        <a href="mailto:contact.donnia@gmail.com">contact.donnia@gmail.com</a><br>
+        for inquiries
+      </div>
+      <nav class="sidebar-nav">
+        <a href="mithra.html" class="nav-link">mithra</a>
+        <a href="buy.html" class="nav-link active">buy</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="main"></main>
+
+</div>
+
+</body>
+</html>

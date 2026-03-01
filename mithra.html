@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithra — Gabrielle Rul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: #fff;
+    color: rgba(0,0,0,0.85);
+    font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
+  }
+
+  /* ---- Layout ---- */
+  .layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ---- Left sidebar ---- */
+  .sidebar {
+    width: 28%;
+    min-width: 220px;
+    max-width: 300px;
+    flex-shrink: 0;
+    padding: 36px 32px 36px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 10;
+  }
+
+  .sidebar-top { display: flex; flex-direction: column; gap: 10px; }
+
+  h1 {
+    font-size: 3.8rem;
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+  }
+
+  .sidebar-contact {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(0,70,171,0.85);
+  }
+  .sidebar-contact a {
+    color: rgba(0,70,171,0.85);
+    text-decoration: none;
+  }
+  .sidebar-contact a:hover { text-decoration: underline; }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 4px;
+  }
+  .nav-link {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(0,70,171,0.85);
+    text-decoration: none;
+  }
+  .nav-link:hover { text-decoration: underline; }
+  .nav-link.active { color: rgba(0,0,0,0.85); }
+
+  /* ---- Main content ---- */
+  .main {
+    flex: 1;
+    padding: 36px 64px 100px 52px;
+    max-width: 740px;
+    overflow-y: auto;
+  }
+
+  /* ---- Communiqué header ---- */
+  .presse-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 3px;
+    text-align: center;
+  }
+  .presse-diffusion {
+    font-size: 0.72rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(0,0,0,0.4);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  /* ---- Headline ---- */
+  .headline {
+    font-size: 2.1rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.018em;
+    color: rgba(0,0,0,0.88);
+    margin-bottom: 22px;
+  }
+  .headline a {
+    color: rgba(0,70,171,0.85);
+    text-decoration: none;
+  }
+  .headline a:hover { text-decoration: underline; }
+
+  /* ---- Subtitle ---- */
+  .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(0,0,0,0.65);
+    margin-bottom: 36px;
+  }
+
+  /* ---- Images ---- */
+  .img-wrap {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .img-wrap img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .img-caption {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: rgba(0,0,0,0.35);
+    margin-bottom: 34px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- Body ---- */
+  .body-text {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.76;
+    color: rgba(0,0,0,0.75);
+    margin-bottom: 22px;
+  }
+  .body-text strong {
+    font-weight: 500;
+    color: rgba(0,0,0,0.88);
+  }
+  .body-text a {
+    color: rgba(0,70,171,0.85);
+    text-decoration: underline;
+  }
+
+  /* ---- Section headings ---- */
+  .section-heading {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: rgba(0,0,0,0.85);
+    margin-top: 32px;
+    margin-bottom: 14px;
+  }
+
+  /* ---- Arrow list ---- */
+  .arrow-list {
+    list-style: none;
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .arrow-list li {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(0,0,0,0.75);
+    padding-left: 20px;
+    position: relative;
+  }
+  .arrow-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: rgba(0,0,0,0.4);
+  }
+  .arrow-list li strong { font-weight: 500; color: rgba(0,0,0,0.88); }
+  .arrow-list li a { color: rgba(0,70,171,0.85); text-decoration: underline; }
+
+  /* ---- Practical info ---- */
+  .info-block {
+    margin-bottom: 28px;
+  }
+  .info-block .info-heading {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: rgba(0,0,0,0.85);
+    margin-bottom: 10px;
+  }
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .bullet-list li {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(0,0,0,0.72);
+    padding-left: 16px;
+    position: relative;
+  }
+  .bullet-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: rgba(0,0,0,0.35);
+  }
+  .bullet-list li a { color: rgba(0,70,171,0.85); text-decoration: underline; }
+
+  /* ---- Contact ---- */
+  .contact-block {
+    margin-bottom: 48px;
+  }
+  .contact-block .info-heading {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: rgba(0,0,0,0.85);
+    margin-bottom: 6px;
+  }
+  .contact-block p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(0,0,0,0.72);
+  }
+  .contact-block a { color: rgba(0,70,171,0.85); text-decoration: underline; }
+
+  /* ---- Divider ---- */
+  .divider {
+    height: 1px;
+    background: rgba(0,0,0,0.08);
+    margin: 48px 0;
+  }
+
+  /* ---- Biography ---- */
+  .bio-heading {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: rgba(0,0,0,0.88);
+    margin-bottom: 30px;
+  }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  .bio-portrait img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .bio-portrait .img-caption { margin-bottom: 0; }
+
+  .bio-text {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.76;
+    color: rgba(0,0,0,0.75);
+  }
+  .bio-text a { color: rgba(0,70,171,0.85); text-decoration: underline; }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 820px) {
+    .bio-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .layout { flex-direction: column; }
+    .sidebar {
+      width: 100%; max-width: 100%;
+      padding: 28px 24px 20px;
+      position: relative; height: auto;
+    }
+    h1 { font-size: 3.2rem; }
+    .main { padding: 28px 24px 60px; }
+    .headline { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <h1>The Mithra<br>Project</h1>
+      <div class="sidebar-contact">
+        <a href="mailto:gabrielle.rul@gmail.com">gabrielle.rul@gmail.com</a><br>
+        <a href="mailto:contact.donnia@gmail.com">contact.donnia@gmail.com</a><br>
+        for inquiries
+      </div>
+      <nav class="sidebar-nav">
+        <a href="mithra.html" class="nav-link active">mithra</a>
+        <a href="https://womenlifefreedom-art.mystrikingly.com/run/login" class="nav-link" target="_blank">buy</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Communiqué -->
+  <main class="main">
+
+    <h2 class="headline">
+      8 MARS, journée internationale des droits des femmes —
+      <a href="mailto:gabrielle.rul@gmail.com">Gabrielle Rul</a>
+      met son art au service de la lutte des femmes iraniennes avec une vente-donation
+    </h2>
+
+    <p class="subtitle">
+      50 châles mis en vente caritative, un court-métrage animé et un poème
+      pour soutenir la lutte des Iranien·ne·s.
+    </p>
+
+    <div class="img-wrap">
+      <img src="PRESSE 8 MARS - Gabrielle Rul/Photos/GabrielleRul14.JPG" alt="© Gabrielle Rul">
+    </div>
+    <div class="img-caption">© Gabrielle Rul</div>
+
+    <p class="body-text">
+      À l'occasion de la Journée internationale des droits des femmes, le 8 mars, l'artiste
+      plasticienne Gabrielle Rul renouvelle son soutien au mouvement <strong>Femme Vie Liberté</strong>
+      et lance une initiative artistique et solidaire pour rendre hommage au combat des Iraniennes.
+    </p>
+
+    <h3 class="section-heading">Un geste artistique engagé</h3>
+
+    <p class="body-text">
+      Gabrielle Rul a conçu <strong>50 carrés de coton en édition limitée</strong>, dont
+      <strong>une partie des bénéfices nets sera reversée à des associations</strong> qui œuvrent
+      pour les droits et la liberté des Iranien·ne·s (Amnesty International,
+      Center for Human Rights in Iran…). Pensées comme <strong>un acte de sororité
+      et de résistance poétique</strong>, ces pièces représentent les symboles du lion et du soleil
+      aux couleurs de l'Iran. Les châles sont produits par
+      <a href="https://www.atelierinsho.com" target="_blank">l'Atelier Insho</a>,
+      <strong>imprimés en France</strong>, avec un tissu certifié Oeko Tex + GOTS.
+    </p>
+
+    <p class="body-text">
+      Au-delà de la vente caritative, ce projet se déploie à travers plusieurs médiums artistiques
+      pour sensibiliser et éduquer :
+    </p>
+
+    <ul class="arrow-list">
+      <li>
+        <strong>Un court-métrage d'animation</strong> réalisé par Gabrielle Rul, qui donne vie
+        au dessin figurant sur les carrés de coton.
+      </li>
+      <li>
+        <strong>Un poème original</strong> qui double le film, écrit et narré
+        <strong>en anglais par <a href="https://www.instagram.com/annamajidson" target="_blank">Anna Majidson</a></strong>,
+        narré <strong>en français par la chanteuse <a href="https://www.instagram.com/solann" target="_blank">Solann</a></strong>.
+        Une version <strong>en persan</strong> (narrée par une Iranienne qui préfèrera probablement
+        rester anonyme) est en cours de production.
+      </li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <div class="img-wrap">
+      <img src="PRESSE 8 MARS - Gabrielle Rul/Photos/GabrielleRul-dessin HD.JPG" alt="Dessin original — © Gabrielle Rul">
+    </div>
+    <div class="img-caption">Dessin original — © Gabrielle Rul</div>
+
+    <div class="info-block">
+      <div class="info-heading">Informations pratiques</div>
+      <ul class="bullet-list">
+        <li>Vente des châles : [lien à venir] — 50 € pièce, 60×60 cm</li>
+        <li>
+          Visuels presse, vidéos, poèmes en 3 langues :
+          <a href="https://www.swisstransfer.com/d/56ea74a6-0b97-4fe8-8f83-edb9e86601af" target="_blank">
+            swisstransfer.com
+          </a>
+          — Crédit à indiquer : © Gabrielle Rul
+        </li>
+        <li>
+          Lien utile :
+          <a href="https://www.instagram.com/gabriellerul" target="_blank">Instagram de l'artiste</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact-block">
+      <div class="info-heading">Contact presse</div>
+      <p>Donnia Ghezlane-Lala</p>
+      <p><a href="mailto:contact.donnia@gmail.com">contact.donnia@gmail.com</a></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Biography -->
+    <h3 class="bio-heading">Biographie.</h3>
+
+    <div class="bio-grid">
+      <div class="bio-portrait">
+        <div class="img-wrap" style="margin-bottom: 8px;">
+          <img src="PRESSE 8 MARS - Gabrielle Rul/bio gabrielle/portrait.jpg"
+            alt="Portrait de Gabrielle Rul — © Nick Prideaux">
+        </div>
+        <div class="img-caption">© Nick Prideaux</div>
+      </div>
+
+      <p class="bio-text">
+        Artiste plasticienne et illustratrice franco-bahnar, Gabrielle Rul a développé un univers
+        pluriel entre dessin, peinture et animation au fil des années. Son travail, marqué par la
+        délicatesse du tracé, une certaine poésie et grouillant de figures féminines, explore les
+        thèmes de l'identité, du rêve, de <em>"la vie, la mort, la vraie, les gens, le manque"</em>.
+        <br><br>
+        Repérée par
+        <a href="https://www.konbini.com" target="_blank">Konbini</a>,
+        <em>Vogue</em> et <em><a href="https://www.numero.com" target="_blank">Numéro</a></em>,
+        elle collabore régulièrement avec des marques (Chanel, Pierre Frey, Kitsuné, MIISTA), des
+        institutions culturelles (Palais de Tokyo, Fondation Moleskine, Imago Mundi,
+        Art on a Postcard).
+        <br><br>
+        Elle met aujourd'hui son art au service de causes qui lui tiennent à cœur, comme des œuvres
+        réalisées pour décorer les hôpitaux de Saint-Maurice, une BD co-créée avec des enfants
+        porteurs de maladies rares, une vente-donation de tableaux pour les hôpitaux psychiatriques
+        de Séoul et des prints pour l'Ukraine.
+      </p>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
