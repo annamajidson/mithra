@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buy — Gabrielle Rul</title>
+<title>Poem — Gabrielle Rul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,7 +11,6 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    height: 100%;
     background: #fff;
     color: rgba(0,0,0,0.85);
     font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
@@ -74,6 +73,21 @@
 
   .main {
     flex: 1;
+    padding: 36px 64px 100px 52px;
+    max-width: 740px;
+  }
+
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-bottom: 48px;
+  }
+  .video-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
   }
 
   @media (max-width: 680px) {
@@ -84,6 +98,7 @@
       position: relative; height: auto;
     }
     h1 { font-size: 3.2rem; }
+    .main { padding: 28px 24px 60px; }
   }
 </style>
 </head>
@@ -101,13 +116,22 @@
       </div>
       <nav class="sidebar-nav">
         <a href="mithra.html" class="nav-link">mithra</a>
-        <a href="poem.html" class="nav-link">poem</a>
-        <a href="buy.html" class="nav-link active">buy</a>
+        <a href="poem.html" class="nav-link active">poem</a>
+        <a href="https://womenlifefreedom-art.mystrikingly.com/run/login" class="nav-link" target="_blank">buy</a>
       </nav>
     </div>
   </aside>
 
-  <main class="main"></main>
+  <main class="main">
+
+    <div class="video-wrap">
+      <iframe src="https://player.vimeo.com/video/1169562732"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+  </main>
 
 </div>
 
