@@ -77,11 +77,21 @@
     max-width: 740px;
   }
 
+  .video-block {
+    margin-bottom: 48px;
+  }
+  .video-label {
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.35);
+    margin-bottom: 10px;
+  }
   .video-wrap {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
-    margin-bottom: 48px;
   }
   .video-wrap iframe {
     position: absolute;
@@ -124,11 +134,24 @@
 
   <main class="main">
 
-    <div class="video-wrap">
-      <iframe src="https://player.vimeo.com/video/1169562732"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+    <div class="video-block">
+      <div class="video-label">English — Anna Majidson</div>
+      <div class="video-wrap">
+        <iframe src="https://player.vimeo.com/video/1169586195"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="video-block">
+      <div class="video-label">Français — Solann</div>
+      <div class="video-wrap">
+        <iframe src="https://player.vimeo.com/video/1169562732"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
 
   </main>
